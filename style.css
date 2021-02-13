@@ -8,7 +8,52 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* === Dark Mode === */
+.label {
+    width: 50px;
+    height: 22px;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    padding: 5px;
+    position: relative;
+    transform: scale(1.5);
+    margin-left: 85%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.ball {
+    width: 19px;
+    height: 18px;
+    position: absolute;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+    transform: translateX(24px);
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
 }
 
 .title-container {
