@@ -68,5 +68,25 @@ body {
 
 .input:focus {
     outline: none;
-    border-color: #f77793;    
+    border-color: #f75c7e;    
+}
+
+.add-btn {
+    display: block;
+    width: 100%;
+    padding: 16px 0;    
+    -webkit-appearance: none;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    color: #fff;
+    background-color: #f55377;
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+.add-btn:hover {
+    background-color: #f5476e;
 }
