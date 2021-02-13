@@ -5,11 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book List App</title>
+
+    <!-- Stylization -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- CSS Libraries -->
+    <script src="https://kit.fontawesome.com/6465650075.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Book List App</h1>
-    
+    <div class="title-container">
+        <i class="fas fa-book-open book-icon"></i>
+        <h1 class="title">Book List App</h1>
+    </div>
+    <form action="" class="form">
+        <div class="form-item">
+            <label for="title" class="input-title">Title</label>
+            <input type="text" name="title" class="input">
+        </div>
+        <div class="form-item">
+            <label for="author" class="input-title">Author</label>
+            <input type="text" name="author" class="input">
+        </div>
+        <div class="form-item">
+            <label for="isbn" class="input-title">ISBN</label>
+            <input type="text" name="isbn" class="input">
+        </div>
+        <button class="add-btn">Add Book</button>
+    </form>
+
+
     <!-- Script -->
     <script src="main.js"></script>
 </body>
