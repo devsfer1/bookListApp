@@ -135,3 +135,28 @@ body {
 .add-btn:hover {
   background-color: #f5476e;
 }
+
+.table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 40px 50px;
+}
+
+.thead {
+  border-bottom: solid 1px #CDD9ED;
+  width: 100%;
+  padding: 20px
+}
+
+td, th {
+  text-align: left;
+  padding: 8px 0;
+}
+
+td {
+  background-color: #F3F1F3;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+
