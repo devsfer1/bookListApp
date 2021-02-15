@@ -135,10 +135,10 @@ td {
   justify-content: space-between;
   border-radius: 50px;
   padding: 5px;
-  position: relative;
+  position: absolute;
   transform: scale(1.5);
   margin-left: 85%;
-  margin-top: 5%;
+  margin-top: -70%;
   cursor: pointer;
 }
 
@@ -163,6 +163,14 @@ td {
 
 .checkbox:checked + .label .ball {
   transform: translateX(24px);
+}
+
+.checkbox:checked ~ .table .trow {
+  background-color: #0D1117;
+}
+
+.checkbox:checked ~ .table .trow td {
+  color: #ACB4BA;  
 }
 
 .dark {

@@ -16,10 +16,12 @@ class UI {
 
   static showBooksInTheDom(book) {
     let tr = document.createElement('tr');
+    tr.className = 'trow';
     tr.innerHTML = 
    `<td>${book.title}</td>
     <td>${book.author}</td>
-    <td>${book.genre}</td>`
+    <td>${book.genre}</td>
+    <td><i class="far fa-times-circle"></i></td>`
 
     table.appendChild(tr);
   }
@@ -40,9 +42,10 @@ form.addEventListener('submit', (e) => {
   UI.showBooksInTheDom(book);
 });
 
+// remove book
 
 // dark mode
-checkbox.addEventListener('change', () => {
+checkbox.addEventListener('change', (e) => {
   document.body.classList.toggle('dark');
   document.querySelector('.title').classList.toggle('light-text');
 
