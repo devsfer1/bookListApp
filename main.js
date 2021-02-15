@@ -21,9 +21,17 @@ class UI {
    `<td>${book.title}</td>
     <td>${book.author}</td>
     <td>${book.genre}</td>
-    <td><i class="far fa-times-circle"></i></td>`
+    <td><span class="delete-btn">X</span></td>`
 
     table.appendChild(tr);
+  }
+
+  static deleteBook(el) {
+    if(el.classList.contains('delete-btn')) {
+      el.parentElement.parentElement.remove();
+    }
+
+    console.log(el.parentElement.parentElement);
   }
 }
 
@@ -43,6 +51,11 @@ form.addEventListener('submit', (e) => {
 });
 
 // remove book
+document.getElementById('book-list').addEventListener('click', (e) => {
+  UI.deleteBook(e.target);
+
+  console.log(e.target);
+});
 
 // dark mode
 checkbox.addEventListener('change', (e) => {
@@ -56,7 +69,6 @@ checkbox.addEventListener('change', (e) => {
     inputTitle[i].classList.toggle('light-text');
     th[i].classList.toggle('light-text');
   }
-
 });
 
 
