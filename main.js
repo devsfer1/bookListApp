@@ -1,6 +1,7 @@
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const checkbox = document.getElementById('checkbox');
+const bookLIst = document.getElementById('book-list');
 
 // book class
 class Book {
@@ -13,7 +14,6 @@ class Book {
 
 // UI class
 class UI {
-
   static showBooksInTheDom(book) {
     let tr = document.createElement('tr');
     tr.className = 'trow';
@@ -21,17 +21,15 @@ class UI {
    `<td>${book.title}</td>
     <td>${book.author}</td>
     <td>${book.genre}</td>
-    <td><span class="delete-btn">X</span></td>`
+    <td><a href="#" class="delete-btn">X</a></td>`
 
-    table.appendChild(tr);
+    bookLIst.appendChild(tr);
   }
 
   static deleteBook(el) {
     if(el.classList.contains('delete-btn')) {
       el.parentElement.parentElement.remove();
     }
-
-    console.log(el.parentElement.parentElement);
   }
 }
 
@@ -51,11 +49,11 @@ form.addEventListener('submit', (e) => {
 });
 
 // remove book
-document.getElementById('book-list').addEventListener('click', (e) => {
+document.querySelector('#book-list').addEventListener('click', (e) => {
+  // Remove book from UI
   UI.deleteBook(e.target);
-
-  console.log(e.target);
 });
+
 
 // dark mode
 checkbox.addEventListener('change', (e) => {
