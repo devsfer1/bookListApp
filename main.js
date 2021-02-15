@@ -3,24 +3,30 @@ const table = document.getElementById('table');
 const checkbox = document.getElementById('checkbox');
 const bookLIst = document.getElementById('book-list');
 
-// book class
+// Book class
 class Book {
-  constructor(title, author, genre) {
+  constructor(title, author, isbn) {
     this.title = title,
     this.author = author,
-    this.genre = genre
+    this.isbn = isbn
   }
 } 
 
 // UI class
 class UI {
+  static displayStoredBooks() {
+    const books = Store.getBooks();
+
+    books.forEach((book) => UI.showBooksInTheDom(book));
+  }
+
   static showBooksInTheDom(book) {
     let tr = document.createElement('tr');
     tr.className = 'trow';
     tr.innerHTML = 
    `<td>${book.title}</td>
     <td>${book.author}</td>
-    <td>${book.genre}</td>
+    <td>${book.isbn}</td>
     <td><i class="far fa-times-circle delete-btn"></i></td>`
 
     bookLIst.appendChild(tr);
@@ -33,25 +39,71 @@ class UI {
   }
 }
 
+// Store class
+class Store {
+  
+  static getBooks() {
+    let books;
+    if(localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+
+    books.push(book);
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if(book.isbn === isbn) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
+// Display stored books
+document.addEventListener('DOMContentLoaded', UI.displayStoredBooks);
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // get DOM values
   const titleInput = document.getElementById('titleInput').value;
   const authorInput = document.getElementById('authorInput').value;
-  const genreInput = document.getElementById('genreInput').value;
+  const isbnInput = document.getElementById('isbnInput').value;
 
   // instantiate book
-  const book = new Book(titleInput, authorInput, genreInput);
+  const book = new Book(titleInput, authorInput, isbnInput);
 
   form.reset();
+
+  // Add book UI
   UI.showBooksInTheDom(book);
+
+  // Add book local storage
+  Store.addBook(book);
 });
 
 // remove book
 document.querySelector('#book-list').addEventListener('click', (e) => {
   // Remove book from UI
   UI.deleteBook(e.target);
+
+  // Remove book from local storage
+  Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 });
 
 // dark mode
