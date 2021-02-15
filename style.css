@@ -124,6 +124,17 @@ td {
   background-color: #fff;
 }
 
+.delete-btn {
+  font-size: 18px;
+  cursor: pointer;
+  color: #db0042;
+  transition: ease 0.2s;
+}
+
+.delete-btn:hover {
+  color: #b3073b;
+}
+
 /* === Dark Mode === */
 .label {
   width: 50px;
@@ -165,7 +176,11 @@ td {
 }
 
 .checkbox:checked ~ .table .trow {
-  background-color: #0D1117;
+  background-color: #131821;
+}
+
+.checkbox:checked ~ .table .trow:nth-child(even) {
+    background-color: #0D1117;
 }
 
 .checkbox:checked ~ .table .trow td {

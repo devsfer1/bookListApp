@@ -21,7 +21,7 @@ class UI {
    `<td>${book.title}</td>
     <td>${book.author}</td>
     <td>${book.genre}</td>
-    <td><a href="#" class="delete-btn">X</a></td>`
+    <td><i class="far fa-times-circle delete-btn"></i></td>`
 
     bookLIst.appendChild(tr);
   }
@@ -53,7 +53,6 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
   // Remove book from UI
   UI.deleteBook(e.target);
 });
-
 
 // dark mode
 checkbox.addEventListener('change', (e) => {
