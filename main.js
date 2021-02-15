@@ -1,5 +1,6 @@
 const form = document.getElementById('form');
 const table = document.getElementById('table');
+const checkbox = document.getElementById('checkbox');
 
 // book class
 class Book {
@@ -37,6 +38,22 @@ form.addEventListener('submit', (e) => {
 
   form.reset();
   UI.showBooksInTheDom(book);
+});
+
+
+// dark mode
+checkbox.addEventListener('change', () => {
+  document.body.classList.toggle('dark');
+  document.querySelector('.title').classList.toggle('light-text');
+
+  const inputTitle = document.querySelectorAll('.input-title');
+  const th = document.querySelectorAll('.th');
+
+  for(let i = 0; i < inputTitle.length; i++) {
+    inputTitle[i].classList.toggle('light-text');
+    th[i].classList.toggle('light-text');
+  }
+
 });
 
 
