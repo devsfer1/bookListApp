@@ -39,9 +39,21 @@ class UI {
   }
 }
 
+// Input Length Class
+class InputLength {
+  static showSuccess(input, message) {
+
+  }
+
+  static checkLength(title, author, isbn) {
+    const titleLength = title.value.length;
+    const authorLength = author.value.length;
+    const isbnLength = isbn.value.length;
+  }
+}
+
 // Store class
 class Store {
-  
   static getBooks() {
     let books;
     if(localStorage.getItem('books') === null) {
@@ -77,6 +89,7 @@ class Store {
 // Display stored books
 document.addEventListener('DOMContentLoaded', UI.displayStoredBooks);
 
+// Add Book
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -92,6 +105,9 @@ form.addEventListener('submit', (e) => {
 
   // Add book UI
   UI.showBooksInTheDom(book);
+
+  // Check Input Length
+  InputLength.checkLength(titleInput, authorInput,isbnInput);
 
   // Add book local storage
   Store.addBook(book);
