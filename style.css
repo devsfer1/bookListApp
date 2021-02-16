@@ -204,3 +204,13 @@ td {
   position: absolute;
 }
 
+/* === Responsive === */
+@media(max-width: 500px) {
+  .label {
+    width: 48px;
+    height: 22px;
+    margin-left: 72%;
+    top: 11%;
+  }
+}
+
