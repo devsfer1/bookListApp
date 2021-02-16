@@ -64,10 +64,6 @@ body {
   margin: 0 0 10px 0;
 }
 
-.input.success {
-  border: 2px solid #6bcf79;
-}
-
 .input.error  {
   border: 2px solid #f23054;
 }

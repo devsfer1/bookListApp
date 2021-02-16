@@ -46,11 +46,7 @@ class InputLength {
     title.classList.remove('error');
     author.classList.remove('error');
     isbn.classList.remove('error');
-
-    title.classList.add('success');
-    author.classList.add('success');
-    isbn.classList.add('success');
-
+    
     alert('Book successfully added');
   }
 
@@ -123,7 +119,6 @@ form.addEventListener('submit', (e) => {
     // Add book local storage
     Store.addBook(book);
   }
-    
     form.reset();
 });
 
