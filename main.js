@@ -41,14 +41,25 @@ class UI {
 
 // Input Length Class
 class InputLength {
-  static showSuccess(input, message) {
+  static showSuccess(title, author, isbn) {
 
+    title.classList.remove('error');
+    author.classList.remove('error');
+    isbn.classList.remove('error');
+
+    title.classList.add('success');
+    author.classList.add('success');
+    isbn.classList.add('success');
+
+    alert('Book successfully added');
   }
 
-  static checkLength(title, author, isbn) {
-    const titleLength = title.value.length;
-    const authorLength = author.value.length;
-    const isbnLength = isbn.value.length;
+  static showError(title, author, isbn) {
+    title.classList.add('error');
+    author.classList.add('error');
+    isbn.classList.add('error');
+
+    alert('Please enter at least one valid character');
   }
 }
 
@@ -94,29 +105,34 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // get DOM values
-  const titleInput = document.getElementById('titleInput').value;
-  const authorInput = document.getElementById('authorInput').value;
-  const isbnInput = document.getElementById('isbnInput').value;
+  const title = document.getElementById('titleInput');
+  const author = document.getElementById('authorInput');
+  const isbn = document.getElementById('isbnInput');
 
   // instantiate book
-  const book = new Book(titleInput, authorInput, isbnInput);
+  const book = new Book(title.value, author.value, isbn.value);
 
-  form.reset();
+  if(title.value.length == "" || author.value.length == "" || isbn.value.length == "") {
+    InputLength.showError(title, author, isbn);
+  } else {
+    InputLength.showSuccess(title, author, isbn);
 
-  // Add book UI
-  UI.showBooksInTheDom(book);
+    // Add book UI
+    UI.showBooksInTheDom(book);
 
-  // Check Input Length
-  InputLength.checkLength(titleInput, authorInput,isbnInput);
-
-  // Add book local storage
-  Store.addBook(book);
+    // Add book local storage
+    Store.addBook(book);
+  }
+    
+    form.reset();
 });
 
 // remove book
 document.querySelector('#book-list').addEventListener('click', (e) => {
   // Remove book from UI
   UI.deleteBook(e.target);
+
+  alert('Book successfully removed');
 
   // Remove book from local storage
   Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
